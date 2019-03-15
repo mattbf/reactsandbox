@@ -4,20 +4,20 @@ import useApi from './useApi.js';
 function Testing() {
   const url = "/todos";
   const [count, setCount] = useState(1);
-  const todo = useApi({
+  const array = useApi({
     method: "GET",
-    url: `${url}/${count}`
+    url: `${url}/` // can append ${count}
   });
 
   return(
     <div>
-    <button onClick={() => setCount(count + 1)}>Next Todo</button>
-    <h1>Todo {count}</h1>
-    <div>
-      {(todo.isLoading && 'Loading...') ||
-        (!todo.isLoading && todo.data.title)
+      {array.isLoading ? 'Loading...':
+        <div>
+        <ul>
+        {array.data.map(item => <li key={item.id}>{item.title}</li>)}
+        </ul>
+        </div>
       }
-    </div>
     </div>
   )
 }
