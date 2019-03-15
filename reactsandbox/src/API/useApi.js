@@ -34,3 +34,6 @@ function useApi(req) {
 }
 
 export default useApi
+
+
+// refer to https://medium.com/@jaryd_34198/seamless-api-requests-with-react-hooks-part-2-3ab42ba6ad5c
