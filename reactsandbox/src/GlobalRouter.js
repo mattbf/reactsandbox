@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './Home.js';
 import Testing from './Testing.js';
-import Appp from './Appp.js';
 
 import {
   BrowserRouter as Router,
