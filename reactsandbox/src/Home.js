@@ -6,7 +6,10 @@ function Home() {
   return(
       <div>
         <h2>Hello, this the the React Sandbox home page.</h2>
-        <Link to="/about"> About Page </Link>
+        <ul>
+          <li><Link to="/about"> About Page </Link></li>
+          <li><Link to="/testing">Testing</Link></li>
+        </ul>
       </div>
   )
 }
