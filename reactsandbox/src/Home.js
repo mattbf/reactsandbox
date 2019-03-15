@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
 
 function About() {
   return(
@@ -10,24 +11,13 @@ function About() {
   )
 }
 
-function GlobalRouter() {
-  return(
-    <div>
-      <Route path="/about" component={About} />
-      <Route exact path="/" component={Home} />
-    </div>
-   )
-}
-
 function Home() {
   return(
-    <GlobalRouter>
       <div>
         <h2>Hello, this the the React Sandbox home page.</h2>
-        <a href="https://www.google.com" target="_blank"> Testing out Links! </a>
-         <Link to="/about"> About Page </Link>
+        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"> Testing out Links! </a>
+        <Link to="/about"> About Page </Link>
       </div>
-    </GlobalRouter>
   )
 }
 
