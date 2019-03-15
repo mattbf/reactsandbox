@@ -14,6 +14,8 @@ function useApi(req) {
       isLoading: true,
       isError: false,
     });
+
+    //change to function so that it can be called separately
     axios(req)
       .then(res =>
         setRes({
@@ -29,6 +31,8 @@ function useApi(req) {
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
+          //call refresh token function which will return a new access token or an error
+          // if a token is returned try the axios request above again
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
