@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Home from './Home.js';
-import About from './Home.js';
 
 import {
   BrowserRouter as Router,
@@ -10,6 +9,15 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+
+function About() {
+  return(
+    <div>
+      <h1>About Page</h1>
+      <Link to="/"> Home Page </Link>
+    </div>
+  )
+}
 
 class App extends Component {
   render() {
@@ -22,8 +30,8 @@ class App extends Component {
               <li><Link to="/about">About</Link></li>
             </ul>
             <hr/>
-            <Route path="/" component={Home} />
-            <Route path="/about" component={About} />
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
           </div>
         </div>
       </Router>
