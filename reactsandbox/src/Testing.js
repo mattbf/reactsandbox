@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useApi from './useApi.js';
 
 function Testing() {
-  const todosApi = "https://jsonplaceholder.typicode.com/todos";
+  const todosApi = "/todos";
   const [count, setCount] = useState(1);
   const todo = useApi({
     method: "GET",
