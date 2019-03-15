@@ -21,7 +21,6 @@ function useApi(req) {
           isLoading: false,
           isError: false,
         }),
-        console.log(res)
       )
       .catch(() =>
         setRes({
