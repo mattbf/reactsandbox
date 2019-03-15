@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home.js';
+import GlobalRouter from './GlobalRouter.js';
 
 import {
   BrowserRouter as Router,
@@ -10,31 +10,17 @@ import {
   Redirect
 } from 'react-router-dom'
 
-function About() {
-  return(
-    <div>
-      <h1>About Page</h1>
-      <Link to="/"> Home Page </Link>
-    </div>
-  )
-}
-
 class App extends Component {
   render() {
     return (
-      <Router>
+      <GlobalRouter>
         <div className="App">
-          <div className="container">
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-            </ul>
-            <hr/>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-          </div>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
         </div>
-      </Router>
+      </GlobalRouter>
     );
   }
 }
