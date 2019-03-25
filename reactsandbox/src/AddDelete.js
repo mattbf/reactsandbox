@@ -7,7 +7,6 @@ function SampleComponent(key, name) {
       <ul>
         <li> {name} </li>
       </ul>
-      <button> 
     </div>
   )
 }
@@ -35,7 +34,7 @@ function AddDelete() {
 
   function deleteChild(id) {
     const newChildren = children
-    .filter((id) => id !== )
+
 
   }
 
@@ -51,3 +50,5 @@ function AddDelete() {
 }
 
 export default AddDelete
+
+// .filter((id) => id !== )
