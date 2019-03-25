@@ -11,7 +11,7 @@ function SampleComponent(key, name) {
   )
 }
 
-function AddDelete() {
+function SimpleAdd() {
   const [children, setChildren] = useState(
     [
       {id: 1, name: "Chris", backgroundcolor: '000000'},
@@ -41,4 +41,4 @@ function AddDelete() {
   )
 }
 
-export default AddDelete
+export default SimpleAdd

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './Home.js';
 import Testing from './Testing.js';
-import AddDelete from './AddDelete.js';
+import SimpleAdd from './SimpleAdd.js';
 
 import {
   BrowserRouter as Router,
@@ -29,7 +29,7 @@ class GlobalRouter extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/testing" component={Testing} />
-          <Route path="/adddelete" component={AddDelete} />
+          <Route path="/simpleAdd" component={SimpleAdd} />
         </div>
       </Router>
     );
