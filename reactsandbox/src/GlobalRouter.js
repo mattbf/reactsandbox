@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home.js';
 import Testing from './Testing.js';
 import SimpleAdd from './SimpleAdd.js';
+import AddDelete from './AddDelete.js';
 
 import {
   BrowserRouter as Router,
@@ -30,6 +31,7 @@ class GlobalRouter extends Component {
           <Route path="/about" component={About} />
           <Route path="/testing" component={Testing} />
           <Route path="/simpleAdd" component={SimpleAdd} />
+          <Route path="/adddelete" component={AddDelete} />
         </div>
       </Router>
     );

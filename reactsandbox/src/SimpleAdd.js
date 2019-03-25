@@ -32,7 +32,7 @@ function SimpleAdd() {
   }
   return(
     <div>
-      <h1> Add and Delete </h1>
+      <h1> Simple Adding </h1>
       <div>
         {childrenList}
       </div>

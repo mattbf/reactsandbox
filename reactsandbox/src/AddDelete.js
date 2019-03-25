@@ -7,6 +7,7 @@ function SampleComponent(key, name) {
       <ul>
         <li> {name} </li>
       </ul>
+      <button> 
     </div>
   )
 }
@@ -14,7 +15,7 @@ function SampleComponent(key, name) {
 function AddDelete() {
   const [children, setChildren] = useState(
     [
-      {id: 1, name: "Chris", backgroundcolor: '000000'},
+      {id: 1, name: "Chris"},
     ]
   )
   //const [count, setCount] = useState(1)
@@ -27,9 +28,17 @@ function AddDelete() {
       )}
     </ul>
   );
+
   function addChild() {
-    setChildren(children.concat([{id: 3, name: "Matt", backgroundcolor: '00C853'}]))
+    setChildren(children.concat([{id: 3, name: "Matt"}]))
   }
+
+  function deleteChild(id) {
+    const newChildren = children
+    .filter((id) => id !== )
+
+  }
+
   return(
     <div>
       <h1> Add and Delete </h1>

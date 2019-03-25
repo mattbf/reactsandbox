@@ -9,7 +9,8 @@ function Home() {
         <ul>
           <li><Link to="/about"> About Page </Link></li>
           <li><Link to="/testing">Testing</Link></li>
-          <li><Link to="/simpleAdd">Add Delete</Link></li>
+          <li><Link to="/simpleAdd">Simple Add</Link></li>
+          <li><Link to="/adddelete">Add Delete</Link></li>
         </ul>
       </div>
   )
