@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import useInput from './useInput';
 
-const ADForm = ({ saveTodo }) => {
+const Form = ({ saveTodo }) => {
   const { value, reset, onChange } = useInput();
 
   return (
@@ -25,4 +25,4 @@ const ADForm = ({ saveTodo }) => {
   );
 };
 
-export default ADForm;
+export default Form;

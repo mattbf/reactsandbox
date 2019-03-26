@@ -4,7 +4,7 @@ import Home from './Home.js';
 import Testing from './Testing.js';
 import SimpleAdd from './SimpleAdd.js';
 import AddDelete from './AddDelete.js';
-import ADWrapper from './AddDelete/ADWrapper.js';
+import Wrapper from './AddDelete/Wrapper.js';
 
 import {
   BrowserRouter as Router,
@@ -32,7 +32,7 @@ class GlobalRouter extends Component {
           <Route path="/about" component={About} />
           <Route path="/testing" component={Testing} />
           <Route path="/simpleAdd" component={SimpleAdd} />
-          <Route path="/adddelete" component={ADWrapper} />
+          <Route path="/adddelete" component={Wrapper} />
         </div>
       </Router>
     );

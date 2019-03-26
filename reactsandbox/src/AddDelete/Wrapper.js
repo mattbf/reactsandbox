@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Typography from '@material-ui/core/Typography';
-import ADForm from './ADForm';
+import Form from './Form';
 import Component from './Component';
 import useInput from './useInput';
 import useAddDelete from './useAddDelete';
 
-const ADWrapper = () => {
+const Wrapper = () => {
   const { todos, addTodo, deleteTodo } = useAddDelete([]);
 
   return (
@@ -15,7 +15,7 @@ const ADWrapper = () => {
         Todos
       </Typography>
 
-      <ADForm
+      <Form
         saveTodo={todoText => {
           const trimmedText = todoText.trim();
 
@@ -30,4 +30,4 @@ const ADWrapper = () => {
   );
 };
 
-export default ADWrapper
+export default Wrapper
