@@ -6,8 +6,10 @@ import Component from './Component';
 import useInput from './useInput';
 import useAddDelete from './useAddDelete';
 
+
+// Optionally create 
 const Wrapper = () => {
-  const { todos, addTodo, deleteTodo } = useAddDelete([]);
+  const { todos, addTodo, deleteTodo } = useAddDelete(["hello", "hi", "item three"]);
 
   return (
     <div className="App">
