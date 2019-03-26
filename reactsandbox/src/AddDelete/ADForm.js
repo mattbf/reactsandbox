@@ -1,9 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import useInputState from './useInputState';
+import useInput from './useInput';
 
-const TodoForm = ({ saveTodo }) => {
-  const { value, reset, onChange } = useInputState();
+const ADForm = ({ saveTodo }) => {
+  const { value, reset, onChange } = useInput();
 
   return (
     <form
@@ -25,4 +25,4 @@ const TodoForm = ({ saveTodo }) => {
   );
 };
 
-export default TodoForm;
+export default ADForm;

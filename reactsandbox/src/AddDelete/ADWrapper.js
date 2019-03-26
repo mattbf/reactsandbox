@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Typography from '@material-ui/core/Typography';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
-import useTodoState from './useTodoState';
+import ADForm from './ADForm';
+import Component from './Component';
+import useInput from './useInput';
+import useAddDelete from './useAddDelete';
 
 const ADWrapper = () => {
-  const { todos, addTodo, deleteTodo } = useTodoState([]);
+  const { todos, addTodo, deleteTodo } = useAddDelete([]);
 
   return (
     <div className="App">
@@ -14,7 +15,7 @@ const ADWrapper = () => {
         Todos
       </Typography>
 
-      <TodoForm
+      <ADForm
         saveTodo={todoText => {
           const trimmedText = todoText.trim();
 
@@ -24,7 +25,7 @@ const ADWrapper = () => {
         }}
       />
 
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <Component todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 };
