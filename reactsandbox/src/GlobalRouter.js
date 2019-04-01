@@ -5,6 +5,7 @@ import Testing from './Testing.js';
 import SimpleAdd from './SimpleAdd.js';
 import AddDelete from './AddDelete.js';
 import Wrapper from './AddDelete/Wrapper.js';
+import DatePickerResponsive from './DatePickerResponsive.js';
 
 import {
   BrowserRouter as Router,
@@ -33,6 +34,7 @@ class GlobalRouter extends Component {
           <Route path="/testing" component={Testing} />
           <Route path="/simpleAdd" component={SimpleAdd} />
           <Route path="/adddelete" component={Wrapper} />
+          <Route path="/datepicker" component={DatePickerResponsive} />
         </div>
       </Router>
     );

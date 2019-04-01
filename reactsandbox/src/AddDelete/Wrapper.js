@@ -7,7 +7,7 @@ import useInput from './useInput';
 import useAddDelete from './useAddDelete';
 
 
-// Optionally create 
+
 const Wrapper = () => {
   const { todos, addTodo, deleteTodo } = useAddDelete(["hello", "hi", "item three"]);
 
