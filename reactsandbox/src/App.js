@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import GlobalRouter from './GlobalRouter.js';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import {
   BrowserRouter as Router,
@@ -10,13 +11,23 @@ import {
   Redirect
 } from 'react-router-dom'
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main:"#00c853",
+    }, 
+  },
+});
+
 class App extends Component {
   render() {
     return (
-      <GlobalRouter>
-        <div className="App">
-        </div>
-      </GlobalRouter>
+      <MuiThemeProvider theme={theme}>
+        <GlobalRouter>
+          <div className="App">
+          </div>
+        </GlobalRouter>
+      </MuiThemeProvider>
     );
   }
 }
