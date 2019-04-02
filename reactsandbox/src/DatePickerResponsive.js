@@ -21,6 +21,9 @@ const useStyles = makeStyles({
   },
   mobile: {
     display: 'none',
+    [theme.breakpoints.up('md')]: {
+     displaay: 'flex',
+   },
   },
 });
 
