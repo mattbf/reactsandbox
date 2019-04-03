@@ -3,9 +3,9 @@ import { BasePicker, MuiPickersUtilsProvider, TimePickerView, Calendar, DatePick
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { Paper } from "@material-ui/core/";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
      displaay: 'flex',
    },
   },
-});
+}));
 
 
 function disableWeekends(date) {
@@ -35,6 +35,8 @@ function disableWeekends(date) {
 function DatePickerResponsive(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
+  const theme = useTheme();
+
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
