@@ -4,6 +4,12 @@ import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { Paper } from "@material-ui/core/";
 import { makeStyles } from '@material-ui/styles';
+import BigCalendar from 'react-big-calendar'
+import events from './events.js';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+// Setup the localizer by providing the moment (or globalize) Object
+// to the correct localizer.
+const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,6 +77,15 @@ function DatePickerResponsive(props) {
             value={selectedDate}
             onChange={handleDateChange}
             animateYearScrolling
+          />
+        </div>
+        <div>
+          <BigCalendar
+            events={events}
+            localizer={localizer}
+            startAccessor="start"
+            endAccessor="end"
+            height={'400px'}
           />
         </div>
     </MuiPickersUtilsProvider>
