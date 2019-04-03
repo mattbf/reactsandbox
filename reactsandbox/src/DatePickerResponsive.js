@@ -3,7 +3,7 @@ import { BasePicker, MuiPickersUtilsProvider, TimePickerView, Calendar, DatePick
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { Paper } from "@material-ui/core/";
-import { makeStyles, useTheme } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,9 +22,10 @@ const useStyles = makeStyles(theme => ({
   mobile: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
-     displaay: 'flex',
-   },
+      display: 'flex'
+    },
   },
+
 }));
 
 
@@ -35,7 +36,6 @@ function disableWeekends(date) {
 function DatePickerResponsive(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
-  const theme = useTheme();
 
 
   return (

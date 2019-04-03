@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import GlobalRouter from './GlobalRouter.js';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 import {
   BrowserRouter as Router,
@@ -15,19 +16,19 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main:"#00c853",
-    }, 
+    },
   },
 });
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <GlobalRouter>
           <div className="App">
           </div>
         </GlobalRouter>
-      </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }
