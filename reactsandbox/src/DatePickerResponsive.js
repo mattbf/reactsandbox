@@ -16,13 +16,16 @@ const useStyles = makeStyles(theme => ({
     padding: '0 30px',
   },
   desktop: {
-    display: 'flex',
-    width: '300px',
+      display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      width: '300px',
+    },
   },
   mobile: {
-    display: 'none',
+    display: 'flex',
     [theme.breakpoints.up('md')]: {
-      display: 'flex'
+      display: 'none'
     },
   },
 
