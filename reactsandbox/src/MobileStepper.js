@@ -36,20 +36,6 @@ const tutorialSteps = [
 ];
 
 
-const testComponents = [
-  {
-    label: 'Pick a day',
-    component:
-    '<h3> hllo </h3>'
-  },
-  {
-    label: 'Pick a time',
-    component:
-    <h5> another comp </h5>,
-  },
-
-]
-
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 400,

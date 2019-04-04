@@ -57,17 +57,41 @@ function DatePickerResponsive(props) {
     {
       label: 'Pick a day',
       component:
-      <DatePicker
-        label="Basic example"
-        value={selectedDate}
-        onChange={handleDateChange}
-        animateYearScrolling
-      />,
+      <BasePicker value={selectedDate} onChange={handleDateChange}>
+        {({
+          date,
+          handleAccept,
+          handleChange,
+          handleClear,
+          handleDismiss,
+          handleSetTodayDate,
+          handleTextFieldChange,
+          pick12hOr24hFormat,
+        }) => (
+          <div>
+            <div className="picker">
+              <Paper style={{ overflow: "hidden" }}>
+                <Calendar date={date} onChange={handleChange} />
+              </Paper>
+            </div>
+          </div>
+        )}
+      </BasePicker>,
     },
     {
       label: 'Pick a time',
       component:
-      <h5> another comp </h5>,
+      <div className={classes.calendar}>
+        <BigCalendar
+          events={events}
+          localizer={localizer}
+          startAccessor="start"
+          endAccessor="end"
+          height={'400px'}
+          view={['day']}
+          toolbar={false}
+        />
+      </div>,
     },
 
   ]
@@ -106,21 +130,6 @@ function DatePickerResponsive(props) {
           </div>
         </div>
         <div className={classes.mobile}>
-          <DatePicker
-            label="Basic example"
-            value={selectedDate}
-            onChange={handleDateChange}
-            animateYearScrolling
-          />
-          <div className={classes.calendar}>
-            <BigCalendar
-              events={events}
-              localizer={localizer}
-              startAccessor="start"
-              endAccessor="end"
-              height={'400px'}
-            />
-          </div>
           <DateMobileStepper stepperComponents={stepperComponents}/>
         </div>
 
