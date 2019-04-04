@@ -34,12 +34,14 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     justifyContent: 'center',
     border: 'solid',
+    borderColor: '#00c853',
+    height: '100vh',
     [theme.breakpoints.up('md')]: {
       display: 'none'
     },
   },
   calendar: {
-    height: '100%',
+    height: '70vh',
   },
   placeholder: {
     width: '80%',
@@ -65,26 +67,29 @@ function DatePickerResponsive(props) {
     {
       label: 'Pick a day',
       component:
-      <BasePicker value={selectedDate} onChange={handleDateChange}>
-        {({
-          date,
-          handleAccept,
-          handleChange,
-          handleClear,
-          handleDismiss,
-          handleSetTodayDate,
-          handleTextFieldChange,
-          pick12hOr24hFormat,
-        }) => (
-          <div>
-            <div className="picker">
-              <Paper style={{ overflow: "hidden" }}>
-                <Calendar date={date} onChange={handleChange} />
-              </Paper>
+      <div>
+
+        <BasePicker value={selectedDate} onChange={handleDateChange}>
+          {({
+            date,
+            handleAccept,
+            handleChange,
+            handleClear,
+            handleDismiss,
+            handleSetTodayDate,
+            handleTextFieldChange,
+            pick12hOr24hFormat,
+          }) => (
+            <div>
+              <div className="picker">
+                <Paper style={{ overflow: "hidden" }}>
+                  <Calendar date={date} onChange={handleChange} />
+                </Paper>
+              </div>
             </div>
-          </div>
-        )}
-      </BasePicker>,
+          )}
+        </BasePicker>
+      </div>,
     },
     {
       label: 'Pick a time',
@@ -106,7 +111,6 @@ function DatePickerResponsive(props) {
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
-    <div className={classes.placeholder}> </div>
       <div className={classes.desktop}>
           <BasePicker value={selectedDate} onChange={handleDateChange}>
             {({

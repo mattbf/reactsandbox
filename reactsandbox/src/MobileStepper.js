@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
@@ -41,6 +42,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 400,
     flexGrow: 1,
+    height: '200px',
   },
   header: {
     display: 'flex',
@@ -52,16 +54,22 @@ const useStyles = makeStyles(theme => ({
     border: 'solid',
   },
   mobileStepper: {
-    position: 'relative',
     left: '0px',
     bottom: '0px',
     width: '100%',
   },
-  img: {
-    height: 255,
-    maxWidth: 400,
-    overflow: 'hidden',
-    display: 'block',
+  content: {
+
+  },
+  gridContainter: {
+    width: '100%',
+    border: 'solid',
+    borderColor: '#7859ee',
+    height: '100vh',
+  },
+  gridItem: {
+    border: 'solid',
+    borderColor: '#2979ff',
     width: '100%',
   },
 }));
@@ -84,35 +92,49 @@ function DateMobileStepper(props) {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
-        <Typography variant="h6">{stepperComponents[activeStep].label}</Typography>
-      </Paper>
+    <Grid
+      container
+      direction="column"
+      justify="space-between"
+      alignItems="center"
+      className={classes.gridContainter}
+    >
+      <Grid item className={classes.gridItem}>
+        <Paper square elevation={0} className={classes.header}>
+          <Typography variant="h6">{stepperComponents[activeStep].label}</Typography>
+        </Paper>
+      </Grid>
+      <Grid item className={classes.gridItem}>
         <div>
           {stepperComponents[activeStep].component}
         </div>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        className={classes.mobileStepper}
-        nextButton={
-          activeStep === maxSteps -1 ?
-          <Button component={ConfirmLink} variant= "contained" color="primary" size="small">
-          Confirm
-          </Button>
-          :
-          <Button variant= "contained" color="primary" size="small" onClick={handleNext}>
-            Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Back
-          </Button>
-        }
-      />
+      </Grid>
+      <Grid item className={classes.gridItem}>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+          className={classes.mobileStepper}
+          nextButton={
+            activeStep === maxSteps -1 ?
+            <Button component={ConfirmLink} variant= "contained" color="primary" size="small">
+            Confirm
+            </Button>
+            :
+            <Button variant= "contained" color="primary" size="small" onClick={handleNext}>
+              Next
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            </Button>
+          }
+          backButton={
+            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              Back
+            </Button>
+          }
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 }
