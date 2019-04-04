@@ -35,6 +35,21 @@ const tutorialSteps = [
   },
 ];
 
+
+const testComponents = [
+  {
+    label: 'Pick a day',
+    component:
+    '<h3> hllo </h3>'
+  },
+  {
+    label: 'Pick a time',
+    component:
+    <h5> another comp </h5>,
+  },
+
+]
+
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 400,
@@ -56,11 +71,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function DateMobileStepper() {
+function DateMobileStepper(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
+  const stepperComponents = props.stepperComponents;
+  const maxSteps = stepperComponents.length;
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -73,13 +89,11 @@ function DateMobileStepper() {
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
+        <Typography>{stepperComponents[activeStep].label}</Typography>
       </Paper>
-      <img
-        className={classes.img}
-        src={tutorialSteps[activeStep].imgPath}
-        alt={tutorialSteps[activeStep].label}
-      />
+        <div>
+          {stepperComponents[activeStep].component}
+        </div>
       <MobileStepper
         steps={maxSteps}
         position="static"

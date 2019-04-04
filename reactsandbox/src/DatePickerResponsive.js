@@ -42,6 +42,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
+
 function disableWeekends(date) {
   return 0;
 }
@@ -50,6 +52,25 @@ function DatePickerResponsive(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
 
+
+  const stepperComponents = [
+    {
+      label: 'Pick a day',
+      component:
+      <DatePicker
+        label="Basic example"
+        value={selectedDate}
+        onChange={handleDateChange}
+        animateYearScrolling
+      />,
+    },
+    {
+      label: 'Pick a time',
+      component:
+      <h5> another comp </h5>,
+    },
+
+  ]
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
@@ -91,6 +112,16 @@ function DatePickerResponsive(props) {
             onChange={handleDateChange}
             animateYearScrolling
           />
+          <div className={classes.calendar}>
+            <BigCalendar
+              events={events}
+              localizer={localizer}
+              startAccessor="start"
+              endAccessor="end"
+              height={'400px'}
+            />
+          </div>
+          <DateMobileStepper stepperComponents={stepperComponents}/>
         </div>
 
     </MuiPickersUtilsProvider>
