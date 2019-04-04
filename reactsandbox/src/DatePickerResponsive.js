@@ -4,6 +4,7 @@ import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { Paper } from "@material-ui/core/";
 import { makeStyles } from '@material-ui/styles';
+import DateMobileStepper from './MobileStepper.js';
 import BigCalendar from 'react-big-calendar'
 import events from './events.js';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -33,6 +34,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'none'
     },
+  },
+  calendar: {
+    height: '400px',
   },
 
 }));
@@ -70,6 +74,15 @@ function DatePickerResponsive(props) {
               </div>
             )}
           </BasePicker>
+          <div className={classes.calendar}>
+            <BigCalendar
+              events={events}
+              localizer={localizer}
+              startAccessor="start"
+              endAccessor="end"
+              height={'400px'}
+            />
+          </div>
         </div>
         <div className={classes.mobile}>
           <DatePicker
@@ -79,15 +92,7 @@ function DatePickerResponsive(props) {
             animateYearScrolling
           />
         </div>
-        <div>
-          <BigCalendar
-            events={events}
-            localizer={localizer}
-            startAccessor="start"
-            endAccessor="end"
-            height={'400px'}
-          />
-        </div>
+
     </MuiPickersUtilsProvider>
   );
 }
