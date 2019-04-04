@@ -54,7 +54,6 @@ const useStyles = makeStyles(theme => ({
     border: 'solid',
   },
   mobileStepper: {
-    left: '0px',
     bottom: '0px',
     width: '100%',
   },
@@ -66,6 +65,8 @@ const useStyles = makeStyles(theme => ({
     border: 'solid',
     borderColor: '#7859ee',
     height: '100vh',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
   gridItem: {
     border: 'solid',
@@ -98,6 +99,7 @@ function DateMobileStepper(props) {
       justify="space-between"
       alignItems="center"
       className={classes.gridContainter}
+      gridTemplateColumns= "auto 1fr auto"
     >
       <Grid item className={classes.gridItem}>
         <Paper square elevation={0} className={classes.header}>

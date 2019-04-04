@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   calendar: {
-    height: '70vh',
+    height: '300px',
   },
   placeholder: {
     width: '80%',
