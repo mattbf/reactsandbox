@@ -31,13 +31,21 @@ const useStyles = makeStyles(theme => ({
   },
   mobile: {
     display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
+    border: 'solid',
     [theme.breakpoints.up('md')]: {
       display: 'none'
     },
   },
   calendar: {
-    height: '400px',
+    height: '100%',
   },
+  placeholder: {
+    width: '80%',
+    height: '200px',
+    border: 'solid',
+  }
 
 }));
 
@@ -87,7 +95,7 @@ function DatePickerResponsive(props) {
           localizer={localizer}
           startAccessor="start"
           endAccessor="end"
-          height={'400px'}
+          height={'100%'}
           view={['day']}
           toolbar={false}
         />
@@ -98,6 +106,7 @@ function DatePickerResponsive(props) {
 
   return (
     <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
+    <div className={classes.placeholder}> </div>
       <div className={classes.desktop}>
           <BasePicker value={selectedDate} onChange={handleDateChange}>
             {({

@@ -45,9 +45,17 @@ const useStyles = makeStyles(theme => ({
   header: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     height: 50,
     paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default,
+    border: 'solid',
+  },
+  mobileStepper: {
+    position: 'relative',
+    left: '0px',
+    bottom: '0px',
+    width: '100%',
   },
   img: {
     height: 255,
@@ -77,7 +85,7 @@ function DateMobileStepper(props) {
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{stepperComponents[activeStep].label}</Typography>
+        <Typography variant="h6">{stepperComponents[activeStep].label}</Typography>
       </Paper>
         <div>
           {stepperComponents[activeStep].component}
