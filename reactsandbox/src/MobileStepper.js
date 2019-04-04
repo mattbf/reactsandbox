@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 const tutorialSteps = [
   {
@@ -63,6 +64,7 @@ function DateMobileStepper(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const stepperComponents = props.stepperComponents;
   const maxSteps = stepperComponents.length;
+  const ConfirmLink = props => <Link to="/about" {...props} />
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -86,7 +88,12 @@ function DateMobileStepper(props) {
         activeStep={activeStep}
         className={classes.mobileStepper}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          activeStep === maxSteps -1 ?
+          <Button component={ConfirmLink} variant= "contained" color="primary" size="small">
+          Confirm
+          </Button>
+          :
+          <Button variant= "contained" color="primary" size="small" onClick={handleNext}>
             Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>
