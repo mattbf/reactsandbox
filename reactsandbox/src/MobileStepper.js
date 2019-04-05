@@ -73,6 +73,19 @@ const useStyles = makeStyles(theme => ({
     borderColor: '#2979ff',
     width: '100%',
   },
+  middleItem: {
+    border: 'solid',
+    borderColor: '#2979ff',
+    width: '100%',
+    flexGrow: 1,
+    alignSelf: 'center',
+    justifySelf: 'center',
+
+  },
+  middleComponent: {
+    height: '70vh',
+  }
+
 }));
 
 function DateMobileStepper(props) {
@@ -106,8 +119,8 @@ function DateMobileStepper(props) {
           <Typography variant="h6">{stepperComponents[activeStep].label}</Typography>
         </Paper>
       </Grid>
-      <Grid item className={classes.gridItem}>
-        <div>
+      <Grid item className={classes.middleItem}>
+        <div className={classes.middleComponent}>
           {stepperComponents[activeStep].component}
         </div>
       </Grid>

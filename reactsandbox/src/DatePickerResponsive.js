@@ -36,38 +36,37 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     border: 'solid',
     borderColor: '#00c853',
-    height: '100vh',
+    height: '100%',
     [theme.breakpoints.up('md')]: {
       display: 'none'
     },
   },
   calendar: {
-    height: '300px',
+    height: '100%',
   },
   placeholder: {
     width: '80%',
     height: '200px',
     border: 'solid',
-  }
+  },
+  badge: {
+   top: '50%',
+   right: -3,
+   // The border color match the background color.
+   border: `2px solid ${
+     theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
+   }`,
+ },
+ stepperComponent: {
+   height: '100px',
+ },
 
 }));
 
 
 
 
-const renderWrappedWeekDay = (date, selectedDate, dayInCurrentMonth) => {
 
-    return (
-      <div>
-
-          <Badge color="secondary" variant="dot">
-            <IconButton>
-            </IconButton>
-          </Badge>
-
-      </div>
-    );
-  };
 
 function DatePickerResponsive(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
@@ -82,6 +81,10 @@ function DatePickerResponsive(props) {
   function disableRandomDates() {
   const disabled = Math.random() > 0.7
   return disabled;
+  }
+
+  function highlightAvail(date) {
+
   }
 
   function checkValue(value, month, array){
@@ -118,12 +121,24 @@ function DatePickerResponsive(props) {
   return isDisabled
   }
 
+  const renderAvailableDays = (date, selectedDate, dayInCurrentMonth, children, shouldDisableDate) => {
+
+      return (
+        <div>
+          <IconButton>
+            <Badge color="secondary" variant="dot" invisible={!disableUnavailableDays}  classes={{ badge: classes.badge }}>
+            {children}
+            </Badge>
+          </IconButton>
+        </div>
+      );
+    };
+
   const stepperComponents = [
     {
       label: 'Pick a day',
       component:
       <div>
-
         <BasePicker value={selectedDate} onChange={handleDateChange}>
           {({
             date,
@@ -144,6 +159,7 @@ function DatePickerResponsive(props) {
                     onChange={handleChange}
                     //maxDate = {new Date()}
                     shouldDisableDate={disableUnavailableDays}
+                    //renderDay={renderAvailableDays}
                   />
                 </Paper>
               </div>
