@@ -2,12 +2,13 @@ import React, { Fragment, useState } from "react";
 import { BasePicker, MuiPickersUtilsProvider, TimePickerView, Calendar, DatePicker } from "material-ui-pickers";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
-import { Paper } from "@material-ui/core/";
+import { Paper, IconButton } from "@material-ui/core/";
 import { makeStyles } from '@material-ui/styles';
 import DateMobileStepper from './MobileStepper.js';
 import BigCalendar from 'react-big-calendar'
 import events from './events.js';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import Badge from '@material-ui/core/Badge';
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
 const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
@@ -58,10 +59,34 @@ function disableWeekends(date) {
   return 0;
 }
 
+const renderWrappedWeekDay = (date, selectedDate, dayInCurrentMonth) => {
+
+    return (
+      <div>
+
+          <Badge color="secondary" variant="dot">
+            <IconButton>
+            </IconButton>
+          </Badge>
+
+      </div>
+    );
+  };
+
 function DatePickerResponsive(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
+  const availableDays = [];
+  const mapevents = events.map((day) => {
+    availableDays.push(day.start.getDate())
+  })
 
+  //console.log(availableDays)
+
+  function disableRandomDates() {
+  const disabled = Math.random() > 0.7
+  return disabled;
+  }
 
   const stepperComponents = [
     {
@@ -79,11 +104,17 @@ function DatePickerResponsive(props) {
             handleSetTodayDate,
             handleTextFieldChange,
             pick12hOr24hFormat,
+            shouldDisableDate,
           }) => (
             <div>
               <div className="picker">
                 <Paper style={{ overflow: "hidden" }}>
-                  <Calendar date={date} onChange={handleChange} />
+                  <Calendar
+                    date={date}
+                    onChange={handleChange}
+
+                    shouldDisableDate={disableRandomDates}
+                  />
                 </Paper>
               </div>
             </div>
@@ -103,6 +134,7 @@ function DatePickerResponsive(props) {
           height={'100%'}
           view={['day']}
           toolbar={false}
+          date={selectedDate}
         />
       </div>,
     },
@@ -139,6 +171,7 @@ function DatePickerResponsive(props) {
               startAccessor="start"
               endAccessor="end"
               height={'400px'}
+              date={selectedDate}
             />
           </div>
         </div>
