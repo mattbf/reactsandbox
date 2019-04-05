@@ -84,29 +84,33 @@ function DatePickerResponsive(props) {
   return disabled;
   }
 
-  function checkValue(value,array){
-  var isAvail = false;
-
-  for(var i=0; i<array.length; i++){
-    var day = array[i];
-    if(day == value){
-    isAvail = true;
-    break;
-    }
+  function checkValue(value, month, array){
+  var isAvail = true;
+  console.log("day we are checking: " + month + ":" + value)
+  console.log("month of events array: " + isMonth)
+  for (var j=0; j<events.length; j++) {
+    var isMonth = events[j].start.getMonth()
+    if (isMonth == month){
+        for(var i=0; i<array.length; i++){
+        var day = array[i];
+        if(day == value){
+        isAvail = false;
+        break;
+        }
+      }
+    } else break
   }
 
   return isAvail;
 }
 
-  function disableWeekends(date) {
-    console.log(date._d.getDate())
+  function disableUnavailableDays(date) {
+    //console.log(date._d.getDate())
     const checkDate = date._d.getDate()
-    const isAvail = checkValue(checkDate, availableDays)
-    console.log(isAvail)
-    //console.log(day._i)
-    //console.log(date)
-    // date._i.getDay() === 5 || date._i.getDay() === 6;
-
+    const checkMonth = date._d.getMonth()
+    //console.log("month: " + checkMonth)
+    const isAvail = checkValue(checkDate, checkMonth, availableDays)
+    //console.log(isAvail)
   return isAvail
   }
 
@@ -135,7 +139,7 @@ function DatePickerResponsive(props) {
                     date={date}
                     onChange={handleChange}
 
-                    shouldDisableDate={disableWeekends}
+                    shouldDisableDate={disableUnavailableDays}
                   />
                 </Paper>
               </div>
