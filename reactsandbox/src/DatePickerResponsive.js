@@ -88,18 +88,21 @@ function DatePickerResponsive(props) {
   var isAvail = true;
   console.log("day we are checking: " + month + ":" + value)
   console.log("month of events array: " + isMonth)
-  for (var j=0; j<events.length; j++) {
+  for (var j=0; j<events.length; j++) { // for every date in events
     var isMonth = events[j].start.getMonth()
-    if (isMonth == month){
-        for(var i=0; i<array.length; i++){
-        var day = array[i];
-        if(day == value){
+    if (isMonth < month){ // if the month is in the past
         isAvail = false;
         break;
+      } else if (isMonth == month){
+          for(var i=0; i<array.length; i++){ // if the month is the current month
+          var day = array[i];
+          if(day == value){
+          isAvail = false;
+          break;
+          }
         }
       }
-    } else break
-  }
+      }
 
   return isAvail;
 }
