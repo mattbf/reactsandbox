@@ -40,7 +40,7 @@ export default [
     end: now,
   },
   {
-    id: 1,
+    id: 6,
     title: 'Long Event',
     start: new Date('May 10, 2019 03:30:00'),
     end: new Date('May 10, 2019 04:30:00'),

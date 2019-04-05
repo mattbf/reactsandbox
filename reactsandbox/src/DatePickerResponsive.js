@@ -85,26 +85,27 @@ function DatePickerResponsive(props) {
   }
 
   function checkValue(value, month, array){
-  var isAvail = true;
+  var isDisabled = true;
   console.log("day we are checking: " + month + ":" + value)
-  console.log("month of events array: " + isMonth)
+  //console.log("month of events array: " + isMonth)
   for (var j=0; j<events.length; j++) { // for every date in events
     var isMonth = events[j].start.getMonth()
     if (isMonth < month){ // if the month is in the past
-        isAvail = false;
-        break;
-      } else if (isMonth == month){
-          for(var i=0; i<array.length; i++){ // if the month is the current month
+        isDisabled = false;
+      }
+
+    else {
+          for(var i=0; i<array.length; i++){
           var day = array[i];
-          if(day == value){
-          isAvail = false;
-          break;
+          if(day == value && isMonth == month){
+          isDisabled = false;
+          console.log(isDisabled)
           }
         }
       }
-      }
+  }
 
-  return isAvail;
+  return isDisabled;
 }
 
   function disableUnavailableDays(date) {
@@ -112,9 +113,9 @@ function DatePickerResponsive(props) {
     const checkDate = date._d.getDate()
     const checkMonth = date._d.getMonth()
     //console.log("month: " + checkMonth)
-    const isAvail = checkValue(checkDate, checkMonth, availableDays)
+    const isDisabled = checkValue(checkDate, checkMonth, availableDays)
     //console.log(isAvail)
-  return isAvail
+  return isDisabled
   }
 
   const stepperComponents = [
@@ -141,7 +142,7 @@ function DatePickerResponsive(props) {
                   <Calendar
                     date={date}
                     onChange={handleChange}
-
+                    //maxDate = {new Date()}
                     shouldDisableDate={disableUnavailableDays}
                   />
                 </Paper>
