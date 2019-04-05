@@ -55,10 +55,6 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function disableWeekends(date) {
-  return 0;
-}
-
 const renderWrappedWeekDay = (date, selectedDate, dayInCurrentMonth) => {
 
     return (
@@ -88,6 +84,32 @@ function DatePickerResponsive(props) {
   return disabled;
   }
 
+  function checkValue(value,array){
+  var isAvail = false;
+
+  for(var i=0; i<array.length; i++){
+    var day = array[i];
+    if(day == value){
+    isAvail = true;
+    break;
+    }
+  }
+
+  return isAvail;
+}
+
+  function disableWeekends(date) {
+    console.log(date._d.getDate())
+    const checkDate = date._d.getDate()
+    const isAvail = checkValue(checkDate, availableDays)
+    console.log(isAvail)
+    //console.log(day._i)
+    //console.log(date)
+    // date._i.getDay() === 5 || date._i.getDay() === 6;
+
+  return isAvail
+  }
+
   const stepperComponents = [
     {
       label: 'Pick a day',
@@ -113,7 +135,7 @@ function DatePickerResponsive(props) {
                     date={date}
                     onChange={handleChange}
 
-                    shouldDisableDate={disableRandomDates}
+                    shouldDisableDate={disableWeekends}
                   />
                 </Paper>
               </div>
