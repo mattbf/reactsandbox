@@ -54,7 +54,7 @@ function Calendar() {
         components={{
                 // you have to pass your custom wrapper here
                 // so that it actually gets used
-                dateCellWrapper: ColoredDateCellWrapper,
+                //dateCellWrapper: ColoredDateCellWrapper,
                 // day: {
                 //   event: EventComponent,
                 // },
