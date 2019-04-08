@@ -15,8 +15,17 @@ const useStyles = makeStyles(theme => ({
     width: '50%',
     padding: '0 30px',
   },
+  event: {
+    border: 'solid',
+  }
 }));
 
+const EventComponent = ({children, event}) => {
+  const classes = useStyles();
+  return(
+    <div className={classes.event}> title: {event.title} </div>
+  )
+}
 
 const ColoredDateCellWrapper = ({children, value}) =>
     React.cloneElement(Children.only(children), {
@@ -44,6 +53,7 @@ function Calendar() {
                 // you have to pass your custom wrapper here
                 // so that it actually gets used
                 dateCellWrapper: ColoredDateCellWrapper,
+                eventWrapper: EventComponent,
             }}
       />
     </div>
