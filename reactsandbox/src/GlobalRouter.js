@@ -6,6 +6,7 @@ import SimpleAdd from './SimpleAdd.js';
 import AddDelete from './AddDelete.js';
 import Wrapper from './AddDelete/Wrapper.js';
 import DatePickerResponsive from './DatePickerResponsive.js';
+import Calendar from './Calendar.js';
 
 import {
   BrowserRouter as Router,
@@ -35,6 +36,7 @@ class GlobalRouter extends Component {
           <Route path="/simpleAdd" component={SimpleAdd} />
           <Route path="/adddelete" component={Wrapper} />
           <Route path="/datepicker" component={DatePickerResponsive} />
+          <Route path="/calendar" component={Calendar} />
         </div>
       </Router>
     );
