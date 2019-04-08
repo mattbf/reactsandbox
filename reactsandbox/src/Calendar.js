@@ -4,6 +4,7 @@ import events from './events.js';
 import moment from "moment";
 import { makeStyles } from '@material-ui/styles';
 
+import EventCSS from './EventCSS.css';
 const localizer = BigCalendar.momentLocalizer(moment)
 const now = new Date()
 
@@ -20,12 +21,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EventComponent = ({children, event}) => {
+const EventComponent = ({event, start, end, allDay,}) => {
   const classes = useStyles();
   return(
-    <div className={classes.event}> title: {event.title} </div>
+    <div className={classes.event}> title {event.title} </div>
   )
 }
+
 
 const ColoredDateCellWrapper = ({children, value}) =>
     React.cloneElement(Children.only(children), {
@@ -53,7 +55,9 @@ function Calendar() {
                 // you have to pass your custom wrapper here
                 // so that it actually gets used
                 dateCellWrapper: ColoredDateCellWrapper,
-                eventWrapper: EventComponent,
+                // day: {
+                //   event: EventComponent,
+                // },
             }}
       />
     </div>
