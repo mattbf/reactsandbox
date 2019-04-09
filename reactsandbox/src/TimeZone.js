@@ -27,11 +27,13 @@ const useStyles = makeStyles(theme => ({
 function TimeZone() {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+  const [age, setAge] = useState('');
+  const [open, setOpen] = useState(false);
+  //const tz1 = selectedDate.getTimezoneOffset();
+  const [tz, setTZ] = useState('Canada/Mountain');
 
-  function handleChange(event) {
-    setAge(event.target.value);
+  function handleSelectTZ(event) {
+    setTZ(event.target.value);
   }
 
   function handleClose() {
@@ -59,8 +61,8 @@ function TimeZone() {
               open={open}
               onClose={handleClose}
               onOpen={handleOpen}
-              value={age}
-              onChange={handleChange}
+              value={tz}
+              onChange={handleSelectTZ}
               inputProps={{
                 name: 'age',
                 id: 'demo-controlled-open-select',
@@ -69,12 +71,13 @@ function TimeZone() {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={'Australia/Brisbane'}>Brisbane</MenuItem>
+                <MenuItem value={'Europe/Athens'}>Athens</MenuItem>
+                <MenuItem value={'Canada/Mountain'}>Mountain time</MenuItem>
               </Select>
           </FormControl>
-        <h2> {selectedDate.toString()} </h2>
+        <h2> {selectedDate.toLocaleString("en-US", {timeZone: tz})} </h2>
+        <h2> timezone: {tz} </h2>
       </MuiPickersUtilsProvider>
     </div>
   )
