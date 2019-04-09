@@ -37,9 +37,26 @@ const ColoredDateCellWrapper = ({children, value}) =>
         },
     });
 
+function eventStyling(event, start, end, isSelected) {
+  //const backgroundColor = '#' + event.colour
+  console.log(isSelected)
+  const backgroundColor = event.colour
+  const style = {
+    backgroundColor: backgroundColor,
+    borderRadius: '0px',
+    opacity: 0.8,
+    color: 'black',
+    border: '0px',
+    display: 'block',
+  };
+  return {
+    style: style
+  }
+}
 
 function Calendar() {
   const classes = useStyles();
+
   return(
     <div className={classes.root}>
       <BigCalendar
@@ -49,6 +66,7 @@ function Calendar() {
         endAccessor="end"
         height={'50%'}
         view={['day']}
+        selectable
         //toolbar={false}
         date={now}
         components={{
@@ -59,6 +77,7 @@ function Calendar() {
                 //   event: EventComponent,
                 // },
             }}
+        eventPropGetter={eventStyling}
       />
     </div>
   )

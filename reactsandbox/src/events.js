@@ -32,17 +32,27 @@ export default [
     title: 'Today',
     start: new Date(new Date().setHours(new Date().getHours() - 3)),
     end: new Date(new Date().setHours(new Date().getHours() + 3)),
+    colour: '2979ff',
+  },
+  {
+    id: 4,
+    title: 'Other event',
+    start: new Date(new Date().setHours(new Date().getHours() - 6)),
+    end: new Date(new Date().setHours(new Date().getHours() -5 )),
+    colour: '00c853',
   },
   {
     id: 5,
     title: 'Point in Time Event',
     start: now,
     end: now,
+    colour: '2979ff',
   },
   {
     id: 6,
     title: 'Long Event',
     start: new Date('May 10, 2019 03:30:00'),
     end: new Date('May 10, 2019 04:30:00'),
+    colour: '2979ff',
   },
 ]
