@@ -40,11 +40,13 @@ const ColoredDateCellWrapper = ({children, value}) =>
 function eventStyling(event, start, end, isSelected) {
   //const backgroundColor = '#' + event.colour
   console.log(isSelected)
-  const backgroundColor = event.colour
+  const backgroundColor = '#' + event.colour
   const style = {
-    backgroundColor: backgroundColor,
-    borderRadius: '0px',
-    opacity: 0.8,
+    backgroundColor: isSelected ? backgroundColor : '#ffffff',
+    boxShadow: isSelected ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+    borderRadius: '2px',
+    //opacity: 0.8,
+    marginLeft: '5px',
     color: 'black',
     border: '0px',
     display: 'block',
