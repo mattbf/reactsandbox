@@ -13,7 +13,7 @@ const CURRENT_DATE = moment().toDate();
 const useStyles = makeStyles(theme => ({
   root: {
     height: 500,
-    width: '50%',
+    width: '90%',
     padding: '0 30px',
   },
   event: {
@@ -37,23 +37,66 @@ const ColoredDateCellWrapper = ({children, value}) =>
         },
     });
 
+// Booking calendar events
+function bookingeventStyling(event, start, end, isSelected) {
+  //const backgroundColor = '#' + event.colour
+  console.log(isSelected)
+  const backgroundColor = '#' + event.colour
+  const style = {
+    backgroundColor: isSelected ? backgroundColor : backgroundColor,
+    boxShadow: isSelected ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+    borderRadius: '4px',
+    //opacity: 0.8,
+    border: isSelected ? 'none' : 'none',
+    marginLeft: '5px',
+    color: 'white',
+    border: '0px',
+    display: 'block',
+    textAlign: 'left',
+  };
+  return {
+    style: style
+  }
+}
+
 function eventStyling(event, start, end, isSelected) {
   //const backgroundColor = '#' + event.colour
   console.log(isSelected)
   const backgroundColor = '#' + event.colour
   const style = {
-    backgroundColor: isSelected ? backgroundColor : '#ffffff',
-    boxShadow: isSelected ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-    borderRadius: '2px',
+    backgroundColor: '#ffffff',
+    boxShadow: isSelected ? '0 6px 6px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+    borderRadius: '4px',
     //opacity: 0.8,
+    border: isSelected ? 'none' : 'none',
     marginLeft: '5px',
     color: 'black',
     border: '0px',
     display: 'block',
+    textAlign: 'left',
   };
   return {
     style: style
   }
+}
+
+function bookingEvent(event) {
+  const meetingCircle = {
+    width: '8px',
+    height: '8px',
+    backgroundColor: '#000000',
+    marginRight: '5px',
+  }
+  const wrapper = {
+    display: 'flex',
+    alignItems: 'center',
+  }
+  return(
+    <div style={wrapper}>
+      <div style={meetingCircle}></div>
+      <div> {event.title} </div>
+    </div>
+  )
 }
 
 function Calendar() {
@@ -67,7 +110,7 @@ function Calendar() {
         startAccessor="start"
         endAccessor="end"
         height={'50%'}
-        view={['day']}
+        //view={['Month', 'week', 'day']}
         selectable
         //toolbar={false}
         date={now}
@@ -75,9 +118,9 @@ function Calendar() {
                 // you have to pass your custom wrapper here
                 // so that it actually gets used
                 //dateCellWrapper: ColoredDateCellWrapper,
-                // day: {
-                //   event: EventComponent,
-                // },
+                 day: {
+                   event: bookingEvent,
+                 },
             }}
         eventPropGetter={eventStyling}
       />
