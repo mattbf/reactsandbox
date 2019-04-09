@@ -1,10 +1,12 @@
-import React, {Children} from 'react';
+import React, {Children, useState} from 'react';
 import BigCalendar from 'react-big-calendar'
 import events from './events.js';
 import moment from "moment";
 import { makeStyles } from '@material-ui/styles';
 
 import EventCSS from './EventCSS.css';
+import EventCard from './EventCard.js';
+
 const localizer = BigCalendar.momentLocalizer(moment)
 const now = new Date()
 
@@ -61,7 +63,7 @@ function bookingeventStyling(event, start, end, isSelected) {
 
 function eventStyling(event, start, end, isSelected) {
   //const backgroundColor = '#' + event.colour
-  console.log(isSelected)
+  //console.log(isSelected)
   const backgroundColor = '#' + event.colour
   const style = {
     backgroundColor: '#ffffff',
@@ -101,6 +103,20 @@ function bookingEvent(event) {
 
 function Calendar() {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [details, setDetails] = useState("")
+
+  function handleSelectEvent(event) {
+    setOpen(true);
+    setDetails(event)
+  }
+
+  const handleClose = value => {
+    setOpen(false);
+    //setDetails(null)
+
+  };
+
 
   return(
     <div className={classes.root}>
@@ -123,7 +139,10 @@ function Calendar() {
                  },
             }}
         eventPropGetter={eventStyling}
-      />
+        onSelectEvent= {(event) => handleSelectEvent(event)}
+       />
+       <EventCard open={open} onClose={handleClose} details={details}/>
+
     </div>
   )
 }
