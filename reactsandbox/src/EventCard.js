@@ -24,6 +24,10 @@ import {
   IconButton,
 } from '@material-ui/core';
 
+import {
+  AccessAlarm,
+} from '@material-ui/icons';
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const useStyles = makeStyles({
@@ -105,6 +109,11 @@ function EventCard(props) {
             <Button size="small" color="primary">
               Learn More
             </Button>
+            <Tooltip title="Add" aria-label="Add">
+              <IconButton aria-label="Delete">
+                <AccessAlarm />
+              </IconButton>
+            </Tooltip>
           </CardActions>
         </Card>
     </Dialog>
