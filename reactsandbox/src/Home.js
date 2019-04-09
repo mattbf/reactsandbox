@@ -13,6 +13,7 @@ function Home() {
           <li><Link to="/adddelete">Add Delete</Link></li>
           <li><Link to="/datepicker"> Responsive Date Picker</Link></li>
           <li><Link to="/calendar">Calendar</Link></li>
+          <li><Link to="/timezone">Timezone</Link></li>
         </ul>
       </div>
   )

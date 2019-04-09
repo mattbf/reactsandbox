@@ -7,6 +7,7 @@ import AddDelete from './AddDelete.js';
 import Wrapper from './AddDelete/Wrapper.js';
 import DatePickerResponsive from './DatePickerResponsive.js';
 import Calendar from './Calendar.js';
+import TimeZone from './TimeZone.js';
 
 import {
   BrowserRouter as Router,
@@ -37,6 +38,7 @@ class GlobalRouter extends Component {
           <Route path="/adddelete" component={Wrapper} />
           <Route path="/datepicker" component={DatePickerResponsive} />
           <Route path="/calendar" component={Calendar} />
+          <Route path="/timezone" component={TimeZone} />
         </div>
       </Router>
     );
