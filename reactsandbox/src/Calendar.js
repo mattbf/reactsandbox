@@ -20,7 +20,17 @@ const useStyles = makeStyles(theme => ({
   },
   event: {
     border: 'solid',
-  }
+  },
+  agendaBlock: {
+    display: 'flex',
+    border: 'solid',
+    width: '100px',
+  },
+  agenda: {
+    height: 500,
+    width: '50%',
+    padding: '0 30px',
+  },
 }));
 
 const EventComponent = ({event, start, end, allDay,}) => {
@@ -29,15 +39,6 @@ const EventComponent = ({event, start, end, allDay,}) => {
     <div className={classes.event}> title {event.title} </div>
   )
 }
-
-
-const ColoredDateCellWrapper = ({children, value}) =>
-    React.cloneElement(Children.only(children), {
-        style: {
-            ...children.style,
-            backgroundColor: value < CURRENT_DATE ? 'lightgreen' : 'lightblue',
-        },
-    });
 
 // Booking calendar events
 function bookingeventStyling(event, start, end, isSelected) {
@@ -82,6 +83,18 @@ function eventStyling(event, start, end, isSelected) {
   }
 }
 
+function agendaStyling(event, start, end, isSelected) {
+  //const backgroundColor = '#' + event.colour
+  //console.log(isSelected)
+  const backgroundColor = '#' + event.colour
+  const style = {
+    width: '125px',
+  };
+  return {
+    style: style
+  }
+}
+
 function bookingEvent(event) {
   const meetingCircle = {
     width: '8px',
@@ -101,24 +114,10 @@ function bookingEvent(event) {
   )
 }
 
-function agendaEvent(event, start, end, isSelected, currentViewName) {
-  //const backgroundColor = '#' + event.colour
-  //console.log(isSelected)
-  const backgroundColor = '#' + event.colour
-  const style = {
-      backgroundColor: '#ffffff',
-      boxShadow: isSelected ? '0 6px 6px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-      borderRadius: '4px',
-      //opacity: 0.8,
-      border: isSelected ? 'none' : 'none',
-      marginLeft: '5px',
-      color: 'black',
-      border: '0px',
-      display: 'block',
-      textAlign: 'left',
-  };
+function agendaEvent(event, start, end, isSelected) {
+  const classes = useStyles();
   return(
-    <div> Title: {event.title} </div>
+    <div className={classes.agendaBlock}> Title: {event.title} </div>
   )
 }
 
@@ -146,7 +145,7 @@ function Calendar() {
 
 
   return(
-    <div className={classes.root}>
+    <div className={curView == 'agenda' ? classes.agenda : classes.root}>
       <BigCalendar
         events={events}
         localizer={localizer}
@@ -169,7 +168,7 @@ function Calendar() {
                    event: agendaEvent,
                  },
             }}
-        eventPropGetter={curView == 'agenda' ? null : eventStyling}
+        eventPropGetter={curView == 'agenda' ? agendaStyling : eventStyling}
         onSelectEvent= {(event) => handleSelectEvent(event)}
        />
        <EventCard open={open} onClose={handleClose} details={details}/>

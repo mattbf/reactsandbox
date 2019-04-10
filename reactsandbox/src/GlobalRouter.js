@@ -8,6 +8,7 @@ import Wrapper from './AddDelete/Wrapper.js';
 import DatePickerResponsive from './DatePickerResponsive.js';
 import Calendar from './Calendar.js';
 import TimeZone from './TimeZone.js';
+import MeetingTypeCardEdit from './MeetingCard.js';
 
 import {
   BrowserRouter as Router,
@@ -34,7 +35,7 @@ class GlobalRouter extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/testing" component={Testing} />
-          <Route path="/simpleAdd" component={SimpleAdd} />
+          <Route path="/meetingcard" component={MeetingTypeCardEdit} />
           <Route path="/adddelete" component={Wrapper} />
           <Route path="/datepicker" component={DatePickerResponsive} />
           <Route path="/calendar" component={Calendar} />
