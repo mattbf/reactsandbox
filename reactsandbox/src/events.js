@@ -11,8 +11,11 @@ export default [
   {
     id: 1,
     title: 'Long Event',
-    start: new Date('April 10, 2019 03:30:00'),
-    end: new Date('April 10, 2019 04:30:00'),
+    start: new Date(new Date().setHours(new Date().getHours() - 8)),
+    end: new Date(new Date().setHours(new Date().getHours() -7 )),
+    email: 'john.doe@example.com',
+    name: 'John Doe',
+    phone: '4031231234',
   },
 
   {
@@ -20,12 +23,6 @@ export default [
     title: 'DTS STARTS',
     start: new Date('April 8, 2019 03:30:00'),
     end: new Date('April 8, 2019 04:30:00'),
-  },
-  {
-    id: 3,
-    title: 'Dinner',
-    start: new Date('April 18, 2019 03:30:00'),
-    end: new Date('April 18, 2019 04:30:00'),
   },
   {
     id: 4,
@@ -36,7 +33,7 @@ export default [
     email: 'john.doe@example.com',
     name: 'John Doe',
     phone: '4031231234',
-    url: 'www.apple.com',
+    url: 'https://www.apple.com',
   },
   {
     id: 4,
@@ -59,12 +56,5 @@ export default [
     name: 'Johnny Hockey Doe',
     phone: '4031231234',
     url: 'www.apple.com',
-  },
-  {
-    id: 6,
-    title: 'Long Event',
-    start: new Date('May 10, 2019 03:30:00'),
-    end: new Date('May 10, 2019 04:30:00'),
-    colour: '2979ff',
   },
 ]
