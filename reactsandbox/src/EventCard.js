@@ -50,7 +50,8 @@ function EventCard(props) {
     onClose(value);
   }
 
-
+  const meetingTime = details.start
+  console.log(meetingTime)
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" {...other}>
         <Card className={classes.card}>
@@ -60,7 +61,7 @@ function EventCard(props) {
                   <ListItemIcon>
                     <div
                       style={{
-                      backgroundColor: 'magenta',
+                      backgroundColor: '#' + details.colour,
                       width: '15px',
                       height: '15px',
                       borderRadius: '50%',
@@ -71,7 +72,7 @@ function EventCard(props) {
                   </ListItemIcon>
                   <ListItemText
                     primary={details.title}
-                    secondary="Date/Time of meeting"
+                    secondary="sjkds"
                   />
                 </ListItem>
                 <ListItem>
@@ -79,8 +80,8 @@ function EventCard(props) {
                     <People/>
                   </ListItemIcon>
                   <ListItemText
-                    primary="First Name Last name"
-                    secondary="Guests email"
+                    primary={details.name}
+                    secondary={details.email}
                   />
                 </ListItem>
                 <ListItem>
@@ -91,12 +92,12 @@ function EventCard(props) {
                     primary="X amount of time before"
                   />
                 </ListItem>
-                <ListItem component="a" href="https://www.google.com" target="_blank">
+                <ListItem button component="a" href="https://www.google.com" target="_blank">
                   <ListItemIcon>
                     <Link/>
                   </ListItemIcon>
                   <ListItemText
-                    primary="Link to Meeting"
+                    primary={details.url}
                   />
                 </ListItem>
               </List>
