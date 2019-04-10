@@ -101,9 +101,31 @@ function bookingEvent(event) {
   )
 }
 
+function agendaEvent(event, start, end, isSelected, currentViewName) {
+  //const backgroundColor = '#' + event.colour
+  //console.log(isSelected)
+  const backgroundColor = '#' + event.colour
+  const style = {
+      backgroundColor: '#ffffff',
+      boxShadow: isSelected ? '0 6px 6px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)' : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+      borderRadius: '4px',
+      //opacity: 0.8,
+      border: isSelected ? 'none' : 'none',
+      marginLeft: '5px',
+      color: 'black',
+      border: '0px',
+      display: 'block',
+      textAlign: 'left',
+  };
+  return(
+    <div> Title: {event.title} </div>
+  )
+}
+
 function Calendar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [curView, setCurView] = useState('month')
   const [details, setDetails] = useState("")
 
   function handleSelectEvent(event) {
@@ -116,6 +138,11 @@ function Calendar() {
     //setDetails(null)
 
   };
+
+  function handleView(view) {
+    setCurView(view)
+    //console.log(curView)
+  }
 
 
   return(
@@ -130,6 +157,7 @@ function Calendar() {
         selectable
         //toolbar={false}
         date={now}
+        onView={(view) => handleView(view)}
         components={{
                 // you have to pass your custom wrapper here
                 // so that it actually gets used
@@ -137,8 +165,11 @@ function Calendar() {
                  day: {
                    event: bookingEvent,
                  },
+                 agenda: {
+                   event: agendaEvent,
+                 },
             }}
-        eventPropGetter={eventStyling}
+        eventPropGetter={curView == 'agenda' ? null : eventStyling}
         onSelectEvent= {(event) => handleSelectEvent(event)}
        />
        <EventCard open={open} onClose={handleClose} details={details}/>

@@ -138,13 +138,13 @@ function EventCard(props) {
               {details.url ?
                 <Fragment>
                   <Tooltip title="Copy Meeting Link" aria-label="Copy Meeting Link">
-                    <IconButton aria-label="CopyLink">
-                      <Link color="primary"/>
+                    <IconButton color="primary" aria-label="CopyLink">
+                      <Link />
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Go to Meeting" aria-label="Go to Meeting">
-                    <IconButton aria-label="GoToMeeting" button component="a" href={details.url} target="_blank">
-                      <Launch color="primary" />
+                    <IconButton color="primary" aria-label="GoToMeeting" button component="a" href={details.url} target="_blank">
+                      <Launch />
                     </IconButton>
                   </Tooltip>
                 </Fragment>
@@ -152,8 +152,8 @@ function EventCard(props) {
                 null
               }
               <Tooltip title="Cancel Meeting" aria-label="Cancel Meeting">
-                <IconButton aria-label="Cancel Meeting">
-                  <Delete color="secondary" />
+                <IconButton color="secondary" aria-label="Cancel Meeting">
+                  <Delete />
                 </IconButton>
               </Tooltip>
             </div>
