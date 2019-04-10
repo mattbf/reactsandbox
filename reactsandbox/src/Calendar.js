@@ -4,7 +4,7 @@ import events from './events.js';
 import moment from "moment";
 import { makeStyles } from '@material-ui/styles';
 
-import EventCSS from './EventCSS.css';
+import calendarstyles from './calendarstyles.css';
 import EventCard from './EventCard.js';
 
 const localizer = BigCalendar.momentLocalizer(moment)
