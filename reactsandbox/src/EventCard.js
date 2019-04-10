@@ -1,6 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import moment from "moment";
 
 import blue from '@material-ui/core/colors/blue';
 
@@ -62,8 +63,10 @@ function EventCard(props) {
     onClose(value);
   }
 
-  const meetingTime = details.start
-  console.log(meetingTime)
+  const startDate = moment(details.start).format("dddd MMMM Do, hh:mm a")
+  const endTime = moment(details.end).format("hh:mm a")
+  const meetingTime = `${startDate} - ${endTime}`
+
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" {...other}>
         <Card className={classes.card}>
@@ -84,7 +87,7 @@ function EventCard(props) {
                   </ListItemIcon>
                   <ListItemText
                     primary={details.title}
-                    secondary="sjkds"
+                    secondary={meetingTime}
                   />
                 </ListItem>
                 <ListItem>
