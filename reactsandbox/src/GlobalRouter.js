@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './Home.js';
 import Testing from './Testing.js';
-import SimpleAdd from './SimpleAdd.js';
+import Cards from './SimpleAdd.js';
 import AddDelete from './AddDelete.js';
 import Wrapper from './AddDelete/Wrapper.js';
 import DatePickerResponsive from './DatePickerResponsive.js';
 import Calendar from './Calendar.js';
 import TimeZone from './TimeZone.js';
 import MeetingTypeCardEdit from './MeetingTypeCard.js';
+
 
 
 import {
@@ -34,7 +35,7 @@ class GlobalRouter extends Component {
       <Router>
         <div className="App">
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/cards" component={Cards} />
           <Route path="/testing" component={Testing} />
           <Route path="/meetingcard" component={MeetingTypeCardEdit} />
           <Route path="/adddelete" component={Wrapper} />

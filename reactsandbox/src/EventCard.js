@@ -160,7 +160,7 @@ function EventCard(props) {
                      disableFocusListener
                      disableHoverListener
                      disableTouchListener
-                     title="Link Copied!"
+                     title= "Link Copied!"
                      placement="left"
                    >
                     <CopyToClipboard text={details.url}
