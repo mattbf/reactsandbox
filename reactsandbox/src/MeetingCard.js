@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import {
   Typography,
   Divider,
@@ -23,10 +23,11 @@ import {
 import { TwitterPicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 500,
     margin: theme.spacing.unit * 2,
+    maxWidth: 750,
   },
   content: {
     width: '100%',
@@ -68,7 +69,7 @@ const styles = theme => ({
 
   }
 
-});
+}));
 
 // function doPostMeeting(values) {
 //   const url = "/meetingtypes";
@@ -91,7 +92,7 @@ const styles = theme => ({
 // }
 
 function MeetingTypeCardEdit(props) {
-  const { classes } = props;
+  const classes = useStyles();
   // const url = "/meetingtypes";
   // const state = getState();
   // const access = state[0].access.access;
@@ -115,7 +116,7 @@ function MeetingTypeCardEdit(props) {
   };
 
   function handleClick(event) {
-    doPost(
+    // doPost(
     //   event,
     //   {
     //     method: "POST",
@@ -136,7 +137,7 @@ function MeetingTypeCardEdit(props) {
 
   return (
       <div>
-          <div>
+          <div className={classes.card}>
             <Button color="primary" onClick={handleClick}>
               submit
             </Button>
@@ -156,7 +157,7 @@ function MeetingTypeCardEdit(props) {
               id="standard-multiline-static"
               label="Meeting Description"
               multiline
-              rowsMax="4"
+              rows="4"
               margin="normal"
               value={values.description}
               name="description"

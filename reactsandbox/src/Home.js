@@ -14,6 +14,7 @@ function Home() {
           <li><Link to="/datepicker"> Responsive Date Picker</Link></li>
           <li><Link to="/calendar">Calendar</Link></li>
           <li><Link to="/timezone">Timezone</Link></li>
+          <li><Link to="/meetingcard">MeetingCard</Link></li>
         </ul>
       </div>
   )
