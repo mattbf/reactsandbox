@@ -104,8 +104,8 @@ function MeetingTypeCardEdit(props) {
   // const access = state[0].access.access;
   // const { doPost } = usePostApi()
   const [values, setValues] = useState({
-  title: 'New Timing Format',
-  description: 'Enter your meeting description here. This will be visible to viewers',
+  title: 'Ex. Google Ads Consultation',
+  description: 'Enter a meeting description here. This will be visible to people viewing your booking page',
   colour: '#333',
   duration: '00:30:00',
 });
@@ -149,7 +149,7 @@ function MeetingTypeCardEdit(props) {
             </Button>
             <div>
               <div className={classes.spacer}>
-                <Typography variant="subtitle"> Meeting Type Title </Typography>
+                <Typography variant="subtitle1"> Meeting Type Title </Typography>
               </div>
               <TextField
                 id="meeting type title"
@@ -162,7 +162,7 @@ function MeetingTypeCardEdit(props) {
               />
             </div>
             <div className={classes.spacer}>
-              <Typography variant="subtitle"> Meeting Description </Typography>
+              <Typography variant="subtitle1"> Meeting Description </Typography>
               <Typography variant="subtitle2"> This will be visible to people viewing your booking page </Typography>
             </div>
             <TextField
@@ -178,7 +178,7 @@ function MeetingTypeCardEdit(props) {
             />
             <div>
               <div className={classes.spacer}>
-                <Typography variant="subtitle"> Meeting Colour </Typography>
+                <Typography variant="subtitle1"> Meeting Colour </Typography>
                 <Typography variant="subtitle2"> Pick a colour from the colour picker or enter a custom HEX code </Typography>
               </div>
               <div style={{ width: '75%',}}>
@@ -187,6 +187,10 @@ function MeetingTypeCardEdit(props) {
                   color={values.colour}
                   onChangeComplete={handleChangeColour('colour')}
                 />
+              </div>
+              <div className={classes.spacer}>
+                <Typography variant="subtitle1"> Meeting Duration </Typography>
+                <Typography variant="subtitle2"> Choose how long the meeting will be </Typography>
               </div>
               <ListItem>
                 <ListItemIcon>
