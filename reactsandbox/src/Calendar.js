@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import calendarstyles from './calendarstyles.css';
 import EventCard from './EventCard.js';
+import MeetingCard from './MeetingCard.js';
 
 const localizer = BigCalendar.momentLocalizer(moment)
 const now = new Date()
@@ -146,6 +147,7 @@ function Calendar() {
 
   return(
     <div className={curView == 'agenda' ? classes.agenda : classes.root}>
+      <MeetingCard/>
       <BigCalendar
         events={events}
         localizer={localizer}

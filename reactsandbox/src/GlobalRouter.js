@@ -8,7 +8,8 @@ import Wrapper from './AddDelete/Wrapper.js';
 import DatePickerResponsive from './DatePickerResponsive.js';
 import Calendar from './Calendar.js';
 import TimeZone from './TimeZone.js';
-import MeetingTypeCardEdit from './MeetingCard.js';
+import MeetingTypeCardEdit from './MeetingTypeCard.js';
+
 
 import {
   BrowserRouter as Router,

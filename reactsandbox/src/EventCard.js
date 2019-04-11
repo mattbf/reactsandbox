@@ -2,6 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import moment from "moment";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import blue from '@material-ui/core/colors/blue';
 
@@ -28,7 +29,7 @@ import {
   ListItemIcon,
   Tooltip,
   IconButton,
-
+  ClickAwayListener,
 } from '@material-ui/core';
 
 
@@ -53,14 +54,26 @@ const useStyles = makeStyles({
 function EventCard(props) {
   const classes = useStyles();
   const { onClose, selectedValue, details, ...other } = props;
+  const [copied, setCopied] = useState(false);
+  const [copyOpen, setCopyOpen] = useState(false);
 
 
   function handleClose() {
     onClose(selectedValue);
+    setCopyOpen(false);
   }
 
   function handleListItemClick(value) {
     onClose(value);
+    setCopyOpen(false);
+  }
+
+  function handleTooltipClose() {
+    setCopyOpen(false);
+  }
+
+  function handleTooltipOpen() {
+    setCopyOpen(true);
   }
 
   const startDate = moment(details.start).format("dddd MMMM Do, hh:mm a")
@@ -137,10 +150,26 @@ function EventCard(props) {
               <div className={classes.buttonGroup}>
               {details.url ?
                 <Fragment>
-                  <Tooltip title="Copy Meeting Link" aria-label="Copy Meeting Link">
-                    <IconButton color="primary" aria-label="CopyLink">
-                      <Link />
-                    </IconButton>
+                  <Tooltip title="Copy Meeting Link">
+                  <Tooltip
+                     PopperProps={{
+                       disablePortal: true,
+                     }}
+                     onClose={handleTooltipClose}
+                     open={copyOpen}
+                     disableFocusListener
+                     disableHoverListener
+                     disableTouchListener
+                     title="Link Copied!"
+                     placement="left"
+                   >
+                    <CopyToClipboard text={details.url}
+                      onCopy={() => setCopied(true)}>
+                      <IconButton onClick={handleTooltipOpen} color="primary" aria-label="CopyLink">
+                        <Link />
+                      </IconButton>
+                    </CopyToClipboard>
+                  </Tooltip>
                   </Tooltip>
                   <Tooltip title="Go to Meeting" aria-label="Go to Meeting">
                     <IconButton color="primary" aria-label="GoToMeeting" button component="a" href={details.url} target="_blank">
