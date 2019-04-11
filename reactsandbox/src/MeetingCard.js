@@ -67,6 +67,12 @@ const useStyles = makeStyles(theme => ({
   },
   fab: {
 
+  },
+  spacer: {
+    width: '100%',
+    textAlign: 'left',
+    marginBottom: '15px',
+    marginTop: '25px',
   }
 
 }));
@@ -142,9 +148,12 @@ function MeetingTypeCardEdit(props) {
               submit
             </Button>
             <div>
+              <div className={classes.spacer}>
+                <Typography variant="subtitle"> Meeting Type Title </Typography>
+              </div>
               <TextField
                 id="meeting type title"
-                label="Meeting Title"
+                variant="outlined"
                 placeholder="Enter the Title"
                 fullWidth
                 value={values.title}
@@ -152,10 +161,14 @@ function MeetingTypeCardEdit(props) {
                 onChange={handleChange('title')}
               />
             </div>
+            <div className={classes.spacer}>
+              <Typography variant="subtitle"> Meeting Description </Typography>
+              <Typography variant="subtitle2"> This will be visible to people viewing your booking page </Typography>
+            </div>
             <TextField
               fullWidth
               id="standard-multiline-static"
-              label="Meeting Description"
+              variant="outlined"
               multiline
               rows="4"
               margin="normal"
@@ -164,7 +177,10 @@ function MeetingTypeCardEdit(props) {
               onChange={handleChange('description')}
             />
             <div>
-              <Typography variant="subtitle2" gutterBottom> Meeting Colour </Typography>
+              <div className={classes.spacer}>
+                <Typography variant="subtitle"> Meeting Colour </Typography>
+                <Typography variant="subtitle2"> Pick a colour from the colour picker or enter a custom HEX code </Typography>
+              </div>
               <div style={{ width: '75%',}}>
                 <TwitterPicker
                   triangle="hide"
@@ -189,7 +205,7 @@ function MeetingTypeCardEdit(props) {
                       <MenuItem value={`00:45:00`}>45 min</MenuItem>
                       <MenuItem value={`00:60:00`}>60 min</MenuItem>
                     </Select>
-                    <FormHelperText>Meeting Duration</FormHelperText>
+
                   </FormControl>
               </ListItem>
             </div>
@@ -200,3 +216,8 @@ function MeetingTypeCardEdit(props) {
 
 
 export default MeetingTypeCardEdit;
+
+
+/*
+<FormHelperText>Meeting Duration</FormHelperText>
+*/
