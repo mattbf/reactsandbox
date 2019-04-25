@@ -1,35 +1,39 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function callApi() {
+function callApi(request) {
   const [res, setRes] = useState({
     data: [],
     isLoading: false,
     isError: false,
   });
-  const [req, setReq] = useState({
-    method: '',
-    url: '',
-  })
+  const [req, setReq] = useState(null)
 
-  function doRequest(request) {
-    setReq(request)
-    doReq(req)
-  }
-  function doReq(req) {
+  useEffect(() => {
+    console.log("Use effect in callApi called")
+    //if (req == null) return;
+    //setReq(request)
+    doReq(request);
+  }, [request]);
+
+
+  function doReq(request) {
+    console.log("Do Req called")
     setRes({
       data: null,
       isLoading: true,
       isError: false,
     });
 
-    axios(req)
+    axios(request)
       .then(res =>
         setRes({
           data: res.data,
           isLoading: false,
           isError: false,
         }),
+        console.log(request),
+        console.log(res)
       )
       .catch(function (error) {
         if (error.response) {
@@ -52,7 +56,7 @@ function callApi() {
         console.log(error.config);
         });
 
-  return {res, doRequest};
+  return res;
 }
 
 }
