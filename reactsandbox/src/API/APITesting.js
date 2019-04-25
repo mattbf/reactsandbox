@@ -20,21 +20,24 @@ function APITesting() {
   const array = useApi({
     method: 'GET',
     url: `${url}/`,
-
   })
   const [request, setRequest] = useState(null);
   const selectData = callApi(request)
 
-  useEffect(() => {
-    console.log("Req changed on UI Comp")
-  }, [request])
-
   function handleClick() {
     setRequest({
-      method: 'GET',
-      url: '/posts',
+      method: 'POST',
+      body: JSON.stringify({
+        title: 'fsdfsdoo',
+        body: 'bsddsdar',
+        userId: 200
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
     })
   }
+
   return(
     <div style={styles.wrapper}>
       <div style={styles.div}>
@@ -52,13 +55,7 @@ function APITesting() {
       <div style={styles.div}>
         <h3> programmatic API req </h3>
         <Button onClick={handleClick}> Click </Button>
-        {request == null ? 'Loading...':
-          <div>
-          <ul>
-          j
-          </ul>
-          </div>
-        }
+
       </div>
     </div>
 

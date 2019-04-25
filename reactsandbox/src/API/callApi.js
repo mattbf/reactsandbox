@@ -18,7 +18,7 @@ function callApi(request) {
 
 
   function doReq(request) {
-    console.log("Do Req called")
+    console.log(request)
     setRes({
       data: null,
       isLoading: true,
@@ -32,7 +32,6 @@ function callApi(request) {
           isLoading: false,
           isError: false,
         }),
-        console.log(request),
         console.log(res)
       )
       .catch(function (error) {
