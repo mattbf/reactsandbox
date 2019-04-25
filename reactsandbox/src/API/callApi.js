@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function useApi(req) {
+function callApi() {
   const [res, setRes] = useState({
     data: [],
     isLoading: false,
     isError: false,
   });
+  const [req, setReq] = useState({
+    method: '',
+    url: '',
+  })
 
-  function doReq() {
+  function doRequest(request) {
+    setReq(request)
+    doReq(req)
+  }
+  function doReq(req) {
     setRes({
       data: null,
       isLoading: true,
@@ -43,17 +51,13 @@ function useApi(req) {
         }
         console.log(error.config);
         });
-  }
 
-
-  useEffect(() => {
-    doReq();
-    }, [req.url]);
-
-  return res;
+  return {res, doRequest};
 }
 
-export default useApi
+}
+
+export default callApi
 
 
 // refer to https://medium.com/@jaryd_34198/seamless-api-requests-with-react-hooks-part-2-3ab42ba6ad5c

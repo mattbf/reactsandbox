@@ -9,6 +9,7 @@ import DatePickerResponsive from './DatePickerResponsive.js';
 import Calendar from './Calendar.js';
 import TimeZone from './TimeZone.js';
 import MeetingTypeCardEdit from './MeetingTypeCard.js';
+import APITesting from './API/APITesting.js';
 
 
 
@@ -42,6 +43,7 @@ class GlobalRouter extends Component {
           <Route path="/datepicker" component={DatePickerResponsive} />
           <Route path="/calendar" component={Calendar} />
           <Route path="/timezone" component={TimeZone} />
+          <Route path="/apitesting" component={APITesting} />
         </div>
       </Router>
     );

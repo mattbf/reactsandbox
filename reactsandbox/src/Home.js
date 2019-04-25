@@ -15,6 +15,7 @@ function Home() {
           <li><Link to="/calendar">Calendar</Link></li>
           <li><Link to="/timezone">Timezone</Link></li>
           <li><Link to="/meetingcard">MeetingCard</Link></li>
+          <li><Link to="/apitesting">API Testing</Link></li>
         </ul>
       </div>
   )
