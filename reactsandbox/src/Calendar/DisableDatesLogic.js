@@ -150,6 +150,7 @@ const useStyles = makeStyles(theme => ({
   },
   calendar: {
     height: '100%',
+    width: '300px',
   },
   placeholder: {
     width: '80%',
@@ -175,6 +176,12 @@ const useStyles = makeStyles(theme => ({
  mobileCalendar: {
    minWidth: '275px',
    border: 'solid',
+ },
+ infoDiv: {
+   display: 'flex',
+ },
+ infoColumn: {
+   width: '32%',
  }
 
 }));
@@ -235,7 +242,7 @@ function DisableDatesLogic({match}) {
       }
     }
   var isDisabled = true;
-  console.log("day we are checking: " + month + ":" + dayOf)
+  //console.log("day we are checking: " + month + ":" + dayOf)
   const currentDate = new Date()
 
   if (month < currentDate.getMonth()) {
@@ -303,14 +310,37 @@ function DisableDatesLogic({match}) {
 
   return isDisabled;
 }
+  function disableUnavailable(checkDate) {
+    var disable = true
+    const newAvails = []
+    testAvails.map(availability => {
+      const sd = new Date(availability.start)
+      newAvails.push(sd.getFullYear() + "/" + sd.getMonth() + "/" + sd.getDate())
+    })
+    console.log(newAvails)
+    // if (month < currentDate.getMonth()) {
+    //   isDisabled = true;
+    // }
+    // if (month == currentDate.getMonth() && dayOf < currentDate.getDate()) {
+    //
+    //   isDisabled = true;
+    // }
+    // const matchingMonth = search(new Date(date).getDate(), testAvails)
+    if (newAvails.includes(checkDate)) {
+      disable = false;
+      console.log(checkDate + "is Available")
+    }
+    return disable
+  }
 
   function disableUnavailableDays(date) {
     //console.log(date._d.getDate())
     const checkDate = date._d.getDate()
     const checkMonth = date._d.getMonth()
-
-    //console.log("month: " + checkMonth)
-    const isDisabled = checkValue(checkDate, checkMonth, date)
+    const YMD = date._d.getFullYear() + "/" + date._d.getMonth() + "/" + date._d.getDate()
+    console.log(YMD)
+    // const isDisabled = checkValue(checkDate, checkMonth, date)
+    const isDisabled = disableUnavailable(YMD)
     //console.log(isAvail)
   return isDisabled
   }
@@ -329,7 +359,7 @@ function DisableDatesLogic({match}) {
               pick12hOr24hFormat,
             }) => (
               <div>
-                <div className="picker">
+                <div className={classes.calendar}>
                   <Paper style={{ overflow: "hidden", paddingBottom: '5px'}}>
                     <Calendar
                       date={date}
@@ -343,12 +373,23 @@ function DisableDatesLogic({match}) {
           </BasePicker>
 
         </MuiPickersUtilsProvider>
-        <ul>
-          {testAvails.map((avail, index) =>
-            <li key={index}> {avail.start}</li>
-          )}
+        <div className={classes.infoDiv}>
+          <div className={classes.infoColumn}>
+            <h3> Availabilities from API </h3>
+            <ul>
+              {testAvails.map((avail, index) =>
+                <li key={index}> Full Date {avail.start} |{new Date(avail.start).getFullYear()} / {new Date(avail.start).getMonth()} / {new Date(avail.start).getDate()}</li>
+              )}
+            </ul>
+          </div>
+          <div className={classes.infoColumn}>
+            <h3> Dates Being Checked </h3>
+          </div>
+          <div className={classes.infoColumn}>
+            <h3> True Dates </h3>
 
-        </ul>
+          </div>
+        </div>
       </Fragment>
     )
 }
