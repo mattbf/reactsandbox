@@ -216,100 +216,6 @@ function DisableDatesLogic({match}) {
   // console.log(match)
   const classes = useStyles();
 
-  //console.log(meetingType)
-  console.log(testAvails)
-  const availDays = [];
-  testAvails.forEach(function(date) {
-    //console.log(new Date(date.start).getMonth())
-    availDays.push({
-      day: new Date(date.start).getDate(),
-      month: new Date(date.start).getMonth()
-    })
-  })
-  console.log(availDays)
-
-  function checkValue(dayOf, month, date){
-    function search(Key, myArray){
-    for (var i=0; i < myArray.length; i++) {
-      // console.log(Key)
-      // console.log(parseInt(new Date(myArray[i].start).getDate()))
-      // console.log(new Date(myArray[i].start).getDate() == Key)
-      // console.log(i)
-        if (new Date(myArray[i].start).getDate() == Key) {
-            //console.log("index:" + i)
-            return new Date(myArray[i].start).getMonth();
-        }
-      }
-    }
-  var isDisabled = true;
-  //console.log("day we are checking: " + month + ":" + dayOf)
-  const currentDate = new Date()
-
-  if (month < currentDate.getMonth()) {
-    isDisabled = true;
-  }
-  if (month == currentDate.getMonth() && dayOf < currentDate.getDate()) {
-
-    isDisabled = true;
-  }
-  const matchingMonth = search(new Date(date).getDate(), testAvails)
-  if (
-      month >= currentDate.getMonth() &&
-      testAvails.some(item => new Date(item.start).getDate() == new Date(date).getDate()) && matchingMonth == new Date(date).getMonth()
-     ) {
-    isDisabled = false;
-  }
-
-  // const flattenedDate = new Date(month, dayOf, currentDate.getYear())
-  // console.log(flattenedDate)
-  //console.log(new Date(testAvails[1].start))
-  const DateMatch = availDays.some(item => item.day == dayOf) && availDays.some(item => item.month === month)
-
-
-  const DateMatchV2 = testAvails.some(item => new Date(item.start).getDate() == new Date(date).getDate()) && matchingMonth == new Date(date).getMonth()
-
-  //console.log(dayOf + "/" + month + DateMatchV2)
-  // console.log(new Date(testAvails[1].start).valueOf())
-  //console.log(new Date(date).getDate())
-   if (DateMatchV2) {
-    console.log(dayOf + "/" + month + DateMatchV2)
-  }
-  //myarr.some(item => item.class === 'y')
-
-  // for (var j=0; j<testAvails.length; j++) {
-  //   availDays.push(testAvails[j].start).getMonth())
-  // }
-  //
-
-
-  //for (var j=0; j<testAvails.length; j++) { // for every date in events
-    // var isMonth = new Date(testAvails[j].start).getMonth() // switch with getAvailabilities response
-    // //console.log("month of events array: " + isMonth)
-    // if (isMonth < month){ // if the month is in the past
-    //     isDisabled = true;
-    //     //console.log("disabled is: " + isDisabled)
-    //   }
-    //
-    // else {
-    //       for(var i=0; i<array.length; i++){
-    //       var day = array[i];
-    //       if(day == dayOf && isMonth == month){
-    //       isDisabled = false;
-    //       //console.log("disabled is: " + isDisabled)
-    //       }
-    //     }
-    //   }
-    // if (month < currentDate.getMonth()) {
-    //   isDisabled = true;
-    // } else if (month == currentDate.getMonth && dayOf < currentDate.getDate) {
-    //   isDisabled = true;
-    // } else if (month >= currentDate.getMonth && availDays.includes(dayOf)) {
-    //   isDisabled = false;
-    // }
-  //}
-
-  return isDisabled;
-}
   function disableUnavailable(checkDate) {
     const currentDate = new Date()
     const currentMonth = currentDate.getMonth() + 1
@@ -322,20 +228,12 @@ function DisableDatesLogic({match}) {
       const sd = new Date(availability.start)
       newAvails.push(sd.getFullYear() + "/" + sd.getMonth() + "/" + sd.getDate())
     })
-    const pastDate = checkMonth < currentMonth
-    console.log(currentMonth)
-    console.log(checkMonth)
-    console.log(pastDate)
-    console.log("--------")
-
-
-    //diable past Dates
 
     // enable available Days
     if (newAvails.includes(checkDate)) {
       disable = false;
-      //console.log(checkDate + "is Available")
     }
+    //disble past dates
     if (checkMonth < currentMonth || checkDay < currentDay) {
       disable = true;
     }
@@ -343,17 +241,11 @@ function DisableDatesLogic({match}) {
   }
 
   function disableUnavailableDays(date) {
-    //console.log(date._d.getDate())
-    const checkDate = date._d.getDate()
-    const checkMonth = date._d.getMonth()
     const YMD = date._d.getFullYear() + "/" + (date._d.getMonth() + 1) + "/" + date._d.getDate()
-    // console.log(date._d.getMonth())
-    // console.log(YMD)
-    // const isDisabled = checkValue(checkDate, checkMonth, date)
     const isDisabled = disableUnavailable(YMD)
-    //console.log(isAvail)
-  return isDisabled
+    return isDisabled
   }
+  
     return (
       <Fragment>
         <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
