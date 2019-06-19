@@ -317,7 +317,8 @@ function DisableDatesLogic({match}) {
       const sd = new Date(availability.start)
       newAvails.push(sd.getFullYear() + "/" + sd.getMonth() + "/" + sd.getDate())
     })
-    console.log(newAvails)
+    //console.log(newAvails)
+    //console.log(checkDate === 2019/6/18 || checkDate === 2019/7/22)
     // if (month < currentDate.getMonth()) {
     //   isDisabled = true;
     // }
@@ -328,7 +329,7 @@ function DisableDatesLogic({match}) {
     // const matchingMonth = search(new Date(date).getDate(), testAvails)
     if (newAvails.includes(checkDate)) {
       disable = false;
-      console.log(checkDate + "is Available")
+      //console.log(checkDate + "is Available")
     }
     return disable
   }
@@ -337,7 +338,8 @@ function DisableDatesLogic({match}) {
     //console.log(date._d.getDate())
     const checkDate = date._d.getDate()
     const checkMonth = date._d.getMonth()
-    const YMD = date._d.getFullYear() + "/" + date._d.getMonth() + "/" + date._d.getDate()
+    const YMD = date._d.getFullYear() + "/" + (date._d.getMonth() + 1) + "/" + date._d.getDate()
+    console.log(date._d.getMonth())
     console.log(YMD)
     // const isDisabled = checkValue(checkDate, checkMonth, date)
     const isDisabled = disableUnavailable(YMD)
