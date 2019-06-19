@@ -15,6 +15,13 @@ const availabilitiesData =
 
     },
     {
+      id: "Chris",
+      start:new Date(2019, 6, 15, 14, 39, 7).toISOString(),
+      end:new Date(2019, 6, 15, 14, 39, 7).toISOString(),
+      title:"Title"
+
+    },
+    {
       id:"Chris",
       start:new Date(2019, 6, 25, 14, 39, 7).toISOString(),
       end:new Date(2019, 6, 25, 14, 39, 7).toISOString(),
